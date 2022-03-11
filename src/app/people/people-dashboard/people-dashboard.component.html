@@ -1,0 +1,48 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef> Id </th>
+      <td mat-cell *matCellDef="let element">{{element.url.split('/').at(-2)}}</td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="Name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element">{{element.name}} </td>
+    </ng-container>
+  
+    <!-- Posts Column -->
+    <ng-container matColumnDef="Birth Year">
+      <th mat-header-cell *matHeaderCellDef> Birth year </th>
+      <td mat-cell *matCellDef="let element">{{element.birth_year}}</td>
+    </ng-container>
+  
+   <!-- Comments Column -->
+  <ng-container matColumnDef="Height">
+    <th mat-header-cell *matHeaderCellDef>Height</th>
+    <td mat-cell *matCellDef="let element">{{element.height}}</td>
+  </ng-container>
+
+   <!-- Comments Column -->
+   <ng-container matColumnDef="No. of films">
+    <th mat-header-cell *matHeaderCellDef>No. of films</th>
+    <td mat-cell *matCellDef="let element">{{element.films.length}}</td>
+  </ng-container>
+   <!-- Comments Column -->
+   <ng-container matColumnDef="Favorite">
+    <th mat-header-cell *matHeaderCellDef>Favorite</th>
+    <td mat-cell *matCellDef="let element">{{element.totalcomments}}</td>
+  </ng-container>
+
+  <!-- Table header read from array of displayedColumns -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr
+    *matRowDef="let row; columns: displayedColumns;" 
+      mat-row  (click)="selectRow(row)"></tr>
+</table>
+<mat-paginator [length]= "100"
+              [pageSize]="5"
+              [pageSizeOptions]="[5, 10, 25, 100]"
+              aria-label="Select page">
+</mat-paginator>
